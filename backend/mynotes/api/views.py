@@ -41,3 +41,19 @@ def createNote(request):
     note = Note.objects.create(body=body, updated=updated)
     serializer = NoteSerializer(note, many = False)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+#@permission_classes([IsAuthenticated])
+def deleteNote(request, pk):
+    note = Note.objects.filter(id=pk).delete()
+    return Response('Note was deleted!')
+
+@api_view(['PUT'])
+#@permission_classes([IsAuthenticated])
+def updateNote(request, pk):
+    data = request.data
+    #current_user = request.user
+    body = data['body']
+    updated = data['updated']
+    note = Note.objects.filter(id=pk).update(body=body, updated=updated)
+    return Response('Note was deleted!')
