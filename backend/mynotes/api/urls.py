@@ -13,5 +13,5 @@ urlpatterns = [
     path('', views.getRoutes),
     path('notes/', views.getNotes),
     path('note/<str:pk>/', views.getNote),
-    path('notes/create-note/', views.createNote),
+    path('create-note/', views.createNote),
 ]
